@@ -1,0 +1,19 @@
+#include<iostream>
+using namespace std;
+int main(){
+    int t; 
+    cin>>t;
+    while(t--){
+        int l,r,d,u;
+        cin>>l;
+        cin>>r;
+        cin>>d;
+        cin>>u;
+        if(l==r && r==d && d==u){
+            cout<<"Yes"<<endl;
+        }else{
+            cout<<"No"<<endl;
+        }
+    }
+    return 0;
+}

@@ -1,0 +1,1 @@
+{"name":"Local: hello","url":"c:\\Users\\acer\\Desktop\\web development\\code forces\\hello.c","tests":[{"id":1760274688339,"input":"9\n1 2 3 4 5 6 7 8 9\n9\n1","output":"Element found at index 8"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\acer\\Desktop\\web development\\code forces\\hello.c","group":"local","local":true}
