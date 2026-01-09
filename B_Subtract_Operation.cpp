@@ -14,6 +14,8 @@ int main(){
             sum+=arr[i];
             freq[arr[i]]++;
         }
-        for
+        for(auto it:freq){
+            dd
+        }
     }
 }
