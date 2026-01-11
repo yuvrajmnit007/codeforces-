@@ -10,35 +10,21 @@ int main(){
         for(int i=0;i<n;i++){
             cin>>arr[i];
         }
-        if(n==1 || n==2){
-            cout<<"YES"<<endl;
-        }else{
-            int i=0; int j=n-1;
-            int count=0;
-            int help;
-             while(i<=j){
-                if(arr[i]==arr[j]){
-                    i++;
-                    j--;
-                    help=arr[i];
-                }else if(arr[i]=arr[j-1]){
-                    j=j--;
-                    count++;
-                    help=arr[i];
-                }else if(arr[i+1]==arr[j]){
-                    i++;
-                    count++;
-                    help=arr[i];
-                }else {
-                    i++;j--;
-                     count+=2;
+        int i=0,j=n-1;
+        bool flag=true;
+        int help;
+        while(i<=j){
+            if(arr[i]==arr[j]){
+                i++;
+                j--;
+            }else{
+                if(flag){
+                    int a,b;
+                    a=arr[i];
+                    b=arr[j];
+                    while(arr[i])
                 }
-             }
-             if(count>help){
-                cout<<"NO"<<endl;
-             }else{
-                cout<<"YES"<<endl;
-             }
+            }
         }
      }
      return 0;
