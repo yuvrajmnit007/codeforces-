@@ -20,6 +20,7 @@ int main(){
         int days=0;
         int saved=0;
         
+        
     }
     return 0;
 }
