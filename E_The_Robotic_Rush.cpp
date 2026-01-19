@@ -1,48 +1,36 @@
 #include<bits/stdc++.h>
 using namespace std;
-int main() {
+int main(){
     int t;
-    cin >> t;
-    while(t--) {
+    cin>>t;
+    while(t--){
         int n,m,k;
         cin>>n>>m>>k;
-        vector<int> a(n);
-        for (int i=0;i<n;i++) {
-            cin >>a[i];
+        vector<int>arr1(n);
+        for(int i=0;i<n;i++){
+            cin>>arr1[i];
         }
-        unordered_set<int>b;
-        b.reserve(m*2);
-        for (int i=0;i <m;i++) {
+        set<int>arr2;
+        for(int i=0;i<m;i++){
             int x;
-            cin >>x;
-            b.insert(x);
+            cin>>x;
+            arr2.insert(x);
         }
         string st;
-        cin >> st;
-        vector<int> alive;
-        alive.reserve(n);
-        for (int i = 0; i < n; i++) alive.push_back(i);
-
-        int offset = 0;
-
-        for (char c : st) {
-            if (c == 'L') offset--;
-            else offset++;
-
-            vector<int> next_alive;
-            next_alive.reserve(alive.size());
-
-            for (int idx : alive) {
-                int cur = a[idx] + offset;
-                if (b.find(cur) == b.end()) {
-                    next_alive.push_back(idx);
-                }
+        cin>>st;
+        int mx=INT_MIN;
+        int mn=0;
+        int count =0;
+        for(int i=0;i<st.size();i++){
+            if(st[i]=='L'){
+                count--;
+                mn=min(mn,count);
+            }else{
+                count++;
+                mx=max(mx,count);
             }
-
-            alive.swap(next_alive);
-            cout << alive.size() << " ";
         }
-        cout << "\n";
+        sort(arr2.begin(),arr2.end());
+
     }
-    return 0;
 }
