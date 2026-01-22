@@ -1,30 +1,24 @@
 #include<bits/stdc++.h>
 using namespace std;
-int main(){
+#define int long long
+signed main(){
     int t;
-    cin>>t;
+    cin >> t;
     while(t--){
         int n;
-        cin>>n;
-        vector<int>help={1111111111,111111111,11111111,1111111,111111,11111,1111,111,11};
-        long long k=n;
-        bool ans=true;
-        while(k>0){
-            int i=0;
-            for(i=0;i<9;i++){
-                if(k/help[i]>=1){
+        cin >> n;
+        bool ans = false;
+        if(n > 1099){
+            ans = true;
+        } else {
+            for(int i = 0; i * 111 <= n; i++){
+                if((n - i * 111) % 11 == 0){
+                    ans = true;
                     break;
                 }
             }
-            k=k-(k/help[i])*help[i];
-            if(k==0){
-                ans=false;
-            }
-            if(k<11){
-                break;
-            }
         }
-        cout<<((ans==true)?"NO":"YES")<<endl;
+        cout << (ans ? "YES" : "NO") << endl;
     }
     return 0;
 }
