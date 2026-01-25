@@ -1,39 +1,30 @@
-#include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
 int main(){
     int n;
     cin>>n;
     long long arr[n];
+    long long p=0;
     for(long long i=0;i<n;i++){
         cin>>arr[i];
-    }
-    long long min=arr[0];
-    for(int i=1;i<n;i++){
-        if(arr[i]<min){
-            min=arr[i];
+        p=__gcd(p,arr[i]);
+        if(p==1){
+            cout<<1<<endl;
+            return 0;
         }
     }
-    int t=1;
-    for(long long i=2;i*i<=min;i++){
-        long long k=0;
-        for(int j=0;j<n;j++){
-            if(arr[j]%i==0){
-                k++;
-                if(k==n){
-                    t=t+2;
-                }
+    long long ans = 1;
+    for(long long i=2;i*i<=p;i++){
+        if(p%i==0){
+            int count=0;
+            while(p%i==0){
+                count++;
+                p/=i;
             }
+            ans*=(count+1);
         }
     }
-    int x=0;
-    for(int i=0;i<n;i++){
-        if(arr[i]%min==0 && min !=1){
-            x++;
-            if(x==n){
-                t++;
-            }
-        }
-    }
-    cout<<t<<endl;
+    if(p>1) ans*= 2; 
+    cout<<ans<<endl;
     return 0;
 }
