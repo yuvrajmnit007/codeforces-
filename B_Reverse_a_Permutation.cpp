@@ -30,6 +30,7 @@ int main() {
                 break;
             }
         }
+        
         for (int x : p) cout << x << " ";
         cout <<endl;
     }
