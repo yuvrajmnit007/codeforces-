@@ -8,28 +8,32 @@ signed main() {
         int n;
         cin >> n;
         vector<int> a(n);
-        vector<int> help(n+1,0);
-        for (int i = 0; i<n; i++) {
-            cin >>a[i];
+        vector<int>help(n+1,0);
+        for(int i=0;i<n;i++){
+            cin>>a[i];
             help[a[i]]++;
         }
-        vector<int> dp(n+1,1e18);
-        for (int i=1; i<=n;i++) {
-            if(help[i]>0)dp[i]=1;
+        vector<int>help1(n+1,1e18);
+        for(int i=1;i<=n;i++){
+            if(help[i]>0){
+                help1[i]=1;
+            }
         }
-        for (int v=2;v<=n;v++) {
-            if (help[v]==0) continue;
-            for (int j =v*2;j<=n;j+= v) {
-                if (dp[j/v]!= 1e18) {
-                    dp[j]=min(dp[j],dp[j/v]+1);
+        for(int i=2;i<=n;i++){
+            if(help[i]==0)continue;
+            for(int j=i;j<=n;j+=i){
+                if(help1[j/i]!=1e18){
+                    help1[j]=min(help1[j],1+help1[j/i]);
                 }
             }
         }
-        for (int i =1;i<=n;i++) {
-            if (dp[i]==1e18)
+        for(int i=1;i<=n;i++){
+            if(help1[i]==1e18){
                 cout<<-1<<" ";
-            else
-                cout<<dp[i]<<" ";
+            }
+            else{
+                cout<<help1[i]<<" ";
+            }
         }
         cout<<endl;
     }
