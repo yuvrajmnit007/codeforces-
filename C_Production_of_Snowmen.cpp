@@ -1,14 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
-int main() {
+#define int long long
+signed main() {
     int t;
-    cin>>t;
-    while(t--){
+    cin >> t;
+    while (t--) {
         int n;
-        cin>>n;
-        vector<int>a(2*n);
-        vector<int>b(2*n);
-        vector<int>c(2*n);
+        cin >> n;
+        vector<int>a(2*n), b(2*n), c(2*n);
         for(int i=0;i<n;i++){
             cin>>a[i];
             a[i+n]=a[i];
@@ -21,29 +20,26 @@ int main() {
             cin>>c[i];
             c[i+n]=c[i];
         }
-        vector<int>ab;
+        vector<int>ab(n,0),bc(n,0);
         for(int i=0;i<n;i++){
-            int count=0;
-            for(int j=0;j<n;j++){
-                if(a[i]<b[i]){
-                    count++;
-                }
+            int j=0;
+            for(int k=0;k<n;k++){
+                while(j<n&&a[i+j]<b[k+j])j++;
+                if(j==n)ab[k]++;
+                else break;
             }
-            ab.push_back(count);
         }
-        vector<int>bc;
-        for(int i=0;i<n;i++){
-            int count=0;
-            for(int j=0;j<n;j++){
-                if(b[i]<c[i]){
-                    count++;
-                }
+        for(int j=0;j<n;j++){
+            int k=0;
+            for(int t=0;t<n;t++){
+                while(k<n&&b[j+k]<c[t+k])k++;
+                if(k==n)bc[j]++;
+                else break;
             }
-            bc.push_back(count);
         }
-        long long ans=0;
-        for(int i=0;i<n;i++){
-            ans+=ab[i]*bc[i];
+        int ans=0;
+        for(int j=0;j<n;j++){
+            ans+=ab[j]*bc[j];
         }
         cout<<ans<<endl;
     }
