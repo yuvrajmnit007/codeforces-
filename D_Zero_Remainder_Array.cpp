@@ -11,19 +11,21 @@ signed main() {
         cin>>n>>k;
         vector<int>arr(n);
         map<int,int>help;
+        int mx=0;
         for(int i=0;i<n;i++){
             cin>>arr[i];
-            if(arr[i]%k!=0)help[k-arr[i]%k]++;
-            else help[0]++;
-        }
-        int ans=0;
-        for(int i=1;i<k;i++){
-            if(help[i]>0){
-                ans=max((help[i]-1)*k+i,ans);
+            if(arr[i]%k!=0){
+                help[k-arr[i]%k]++;
+                mx=max(mx,help[k-arr[i]%k]);
             }
         }
-        if(ans!=0)cout<<ans+1<<endl;
-        else cout<<0<<endl;
+        int ans=0;
+        for(auto it:help){
+            if(it.second==mx){
+                ans=k*(mx-1)+it.first+1;
+            }
+        }
+        cout<<ans<<endl;
     }
     return 0;
 }
