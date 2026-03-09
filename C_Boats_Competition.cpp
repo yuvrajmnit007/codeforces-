@@ -10,26 +10,26 @@ signed main() {
         int n;
         cin>>n;
         vector<int>a(n);
+        unordered_map<int,int>help;
         for(int i=0;i<n;i++){
             cin>>a[i];
+            help[a[i]]++;
         }
-        sort(a.begin(),a.end());
         int ans=0;
-        for(int i=1;i<=2*n;i++){
-            int p=0,q=1;
+        int l=0;
+        while(l<=2*n){
+            unordered_map<int,int>mp=help;
             int temp=0;
-            while(p<n){
-                if(a[p]+a[q]==i){
-                    temp++;
-                    p++;
-                    q++;
-                }else if(a[p]+a[q]<i){
-                    p++;
-                }else{
-                    q++;
+            for(int i=0;i<=l/2;i++){
+                int j=l-i;
+                if(i==j){
+                    temp+=mp[i]/2;
+                }else {
+                    temp+=min(mp[i],mp[j]);
                 }
             }
             ans=max(ans,temp);
+            l++;
         }
         cout<<ans<<endl;
     }
