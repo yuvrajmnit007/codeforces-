@@ -9,19 +9,19 @@ signed main() {
     while (t--) {
         int n;
         cin>>n;
-        vector<int>arr(n);
-        unordered_map<int,int>mp;
+        int sum=0;
+        int mx=0;
         for(int i=0;i<n;i++){
-            cin>>arr[i];
-            mp[arr[i]]++;
+            int x;
+            cin>>x;
+            sum+=x;
+            mx=max(mx,x);
         }
-        for(auto it:mp){
-            if((it.second)%2&&(it.first)%2){
-                cout<<"NO"<<endl;
-                return 0;
-            }
+        if(sum%2==0&&mx<=sum-mx){
+            cout<<"YES"<<endl;
+        }else{
+            cout<<"NO"<<endl;
         }
-        cout<<"YES"<<endl;
     }
     return 0;
 }

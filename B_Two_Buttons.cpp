@@ -1,15 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define int long long
-void factors(int n,vector<int>&a){
-    for(int i=2;i*i<=n;i++){
-        while(n%i==0){
-            a.push_back(i);
-            n/=i;
-        }
-    }
-    if(n>1)a.push_back(n);
-}
 signed main() {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
@@ -18,23 +9,26 @@ signed main() {
     while (t--) {
         int n,m;
         cin>>n>>m;
-        vector<int>a;
-        factors(m,a);
-        int ans=1;
-        int count=0;
-        for(int i=0;i<a.size();i++){
-            if(a[i]!=2)ans*=a[i];
-            else count++;
-        }
-        if(ans<=n){
-            cout<<n-ans+count<<endl;
-        }else{
-            int count2=0;
-            while(n<m){
-                n*=2;
-                count2++;
+        vector<int>vis(20001,0);
+        queue<pair<int,int>>q;
+        q.push({n,0});
+        vis[n]=1;
+        while(!q.empty()){
+            int x=q.front().first;
+            int y=q.front().second;
+            q.pop();
+            if(x==m){
+                cout<<y<<endl;
+                return 0;
             }
-            cout<<count2+n-m<<endl;
+            if(2*x<20001&&vis[2*x]==0){
+                vis[2*x]=1;
+                q.push({2*x,y+1});
+            }
+            if(x-1>=0&&vis[x-1]==0){
+                vis[x-1]=1;
+                q.push({x-1,y+1});
+            }
         }
     }
     return 0;
