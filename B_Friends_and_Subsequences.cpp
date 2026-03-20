@@ -26,11 +26,11 @@ signed main() {
     for(int i=0;i<n;i++){
         cin>>b[i];
     }
-    segtree.resize(4*n,{1e18,1e18});
+    segtree.resize(4*n,{-1e18,1e18});
     build(0,0,n-1,a,b);
     int count=0;
     for(auto it:segtree){
-        if(it.first==it.second&&it.first!=1e18){
+        if(it.first==it.second){
             count++;
         }
     }
