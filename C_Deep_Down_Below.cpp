@@ -9,9 +9,17 @@ int main(){
         while(k--){
             int n;
             cin>>n;
-            int arr[n];
-            for(int i=0;i<n;i++)cin>>arr[i];
-            
+            vector<int>temp;
+            while(n--){
+                int k;
+                cin>>k;
+                vector<int>arr(k);
+                for(int i=0;i<k;i++){
+                    cin>>arr[i];
+                }
+                temp.push_back(mx);
+            }
+
         }
     }
 }
