@@ -17,54 +17,49 @@ signed main() {
         for(int j=0;j<n;j++){
             cin>>b[j];
         }
-        int tmp1=0,tmp2=0;
+        int fir=0,sec=0;
+        int tmp1=0;
+        int tmp2=0;
         for(int i=0;i<n;i++){
-            if(a[i]<0&&b[i]<0){
-                if(tmp2>tmp1){
-                    tmp2+=b[i];
+            if(a[i]!=b[i]){
+                if(a[i]>b[i]){
+                    fir+=a[i];
                 }else{
-                    tmp1+=a[i];
-                }
-            }else if(b[i]>0&&a[i]>0){
-                if(tmp2>tmp1){
-                    tmp1+=a[i];
-                }else{
-                    tmp2+=b[i];
+                    sec+=b[i];
                 }
             }else{
-                if(a[i]>=0){
-                    tmp1+=a[i];
-                }else{
-                    tmp2+=b[i];
-                }
+                if(a[i]>0)tmp1+=a[i];
+                else tmp2+=a[i];
             }
         }
-        int tmp3=0,tmp4=0;
-        for(int i=0;i<n;i++){
-            if(a[i]<0&&b[i]<0){
-                if(tmp2>tmp1){
-                    tmp4+=b[i];
-                }else{
-                    tmp3+=a[i];
-                }
-            }else if(b[i]>0&&a[i]>0){
-                if(tmp2>tmp1){
-                    tmp3+=a[i];
-                }else{
-                    tmp4+=b[i];
-                }
+        if(fir>sec){
+            int diff=min(fir-sec,abs(tmp2));
+            fir-=diff;
+            tmp2+=diff;
+        }else{
+            int diff=min(sec-fir,abs(tmp2));
+            sec-=diff;
+            tmp2+=diff;
+        }
+        if(fir<sec){
+            int diff=min(-fir+sec,tmp1);
+            fir+=diff;
+            tmp1-=diff;
+        }else{
+            int diff=min(-sec+fir,tmp1);
+            sec+=diff;
+            tmp1-=diff;
+        }
+        if(fir==sec){
+            int net=tmp1+tmp2;
+            if(net>=0){
+                cout<<fir+net/2<<endl;
             }else{
-                if(a[i]>=0){
-                    tmp3+=a[i];
-                }else{
-                    tmp4+=b[i];
-                }
+                cout<<fir+(net-1)/2<<endl;
             }
+        }else{
+            cout<<min(fir,sec)<<endl;
         }
-        int ans1=min(tmp1,tmp2);
-        int ans2=min(tmp3,tmp4);
-        int ans=max(ans1,ans2);
-        cout<<ans<<endl;
     }
     return 0;
 }
