@@ -1,35 +1,32 @@
-#include<iostream>
+#include <bits/stdc++.h>
 using namespace std;
-int main(){
+#define int long long
+signed main() {
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
     int t;
-    cin>>t;
-    while(t--){
+    cin >> t;
+    while (t--) {
         string st;
         cin>>st;
-        int k=st.length();
-        int t=0;
-        if(st[0]=='1'){
-            for(int i=1;i<k;i++){
-                if(st[i]=='1'){
-                    t++;
-                }
+        int ans=1e18;
+        for(int i=0;i<st.size();i++){
+            int count1=0,count0=0;
+            for(int j=0;j<i;j++){
+                if(st[j]=='0'){
+                    count0++;
+                }else count1++;
             }
-            cout<<t<<endl;
-        }else if(st[k-1]=='1' && st[0]!='1'){
-             for(int i=0;i<k-1;i++){
-                if(st[i]=='1'){
-                    t++;
-                }
+            int cnt1,cnt0;
+            cnt0=cnt1=0;
+            for(int j=i;j<st.size();j++){
+                if(st[j]=='0'){
+                    cnt0++;
+                }else cnt1++;
             }
-                cout<<t<<endl;
-        }else{
-            for(int i=1;i<k-1;i++){
-                if(st[i]=='1'){
-                    t++;
-                }
-            }
-                cout<<t<<endl;
-    }
+            ans=min({ans,cnt0+count0,cnt0+count1,count0+cnt1,count1+cnt1});
+        }
+        cout<<ans<<endl;
     }
     return 0;
 }
