@@ -26,8 +26,7 @@ signed main() {
                 arr.push_back({even,odd});
             }
             while(node<=n){
-                arr.push_back({1,node+1});
-                node++;
+                arr.push_back({1,node++});
             }
         }else{
             for(int i=0;i<x-1;i++){
@@ -37,8 +36,7 @@ signed main() {
                 arr.push_back({even,odd});
             }
             while(node<=n){
-                arr.push_back({1,node+1});
-                node++;
+                arr.push_back({1,node++});
             }
         }
         for(auto it:arr){
