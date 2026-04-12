@@ -9,16 +9,18 @@ signed main() {
     while (t--) {
         int n;
         cin>>n;
-        vector<pair<int,int>>arr;
-        for(int i=0;i<n;i++){
-            int x;
-            cin>>x;
-            if(i+1>x&&st.count(x)==0){
-                arr.push_back({x,i+1});
-            }
+        vector<int>arr(n+1);
+        for(int i=1;i<=n;i++){
+            cin>>arr[i];
         }
-        sort(arr.begin(),arr.end());
-        
+        int ans=0;
+        vector<int>help;
+        for(int i=1;i<=n;i++){
+            if(arr[i]>=i)continue;
+            ans+=lower_bound(help.begin(),help.end(),arr[i])-help.begin();
+            help.push_back(i);
+        }
+        cout<<ans<<endl;
     }
     return 0;
 }

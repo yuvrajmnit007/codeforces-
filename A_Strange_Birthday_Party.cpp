@@ -18,10 +18,11 @@ signed main() {
         }
         vector<int>vec=arr1;
         sort(vec.begin(),vec.end());
+        sort(arr.begin(),arr.end());
         int i=0;
         int j=0;
         while(j<n&&i<m){
-            if(vec[i]>cost)
+            
         }
     }
     return 0;
