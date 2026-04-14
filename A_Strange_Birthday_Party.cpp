@@ -16,14 +16,25 @@ signed main() {
         for(int j=0;j<m;j++){
             cin>>arr1[j];
         }
-        vector<int>vec=arr1;
-        sort(vec.begin(),vec.end());
-        sort(arr.begin(),arr.end());
-        int i=0;
-        int j=0;
-        while(j<n&&i<m){
-            
+        vector<pair<int,int>>vec;
+        for(int i=0;i<n;i++){
+            vec.push_back({arr1[arr[i]-1],arr[i]-1});
         }
+        sort(vec.begin(),vec.end());
+        sort(arr1.begin(),arr1.end());
+        int sum=0;
+        int j=0;
+        for(int i=n-1;i>=0;i--){
+            int cost=vec[i].first;
+            int idx=vec[i].second;
+            if(cost>arr1[j]){
+                sum+=arr1[j];
+                j++;
+            }else{
+                sum+=cost;
+            }
+        }
+        cout<<sum<<endl;
     }
     return 0;
 }
