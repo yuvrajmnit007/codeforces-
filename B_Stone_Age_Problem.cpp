@@ -4,67 +4,41 @@ using namespace std;
 signed main() {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
-    int n,q; cin>>n>>q;
+    int n,q; 
+    cin>>n>>q;
     vector<int>arr(n);
+    vector<int>help(n,0);
     int sum=0;
     for(int i=0;i<n;i++){
         cin>>arr[i];
         sum+=arr[i];
     }
-    // queue<pair<int,int>>help;
-    // while(q--){
-    //     int a;
-    //     cin>>a;
-    //     if(a==1){
-    //         int i,x;
-    //         cin>>i>>x;
-    //         help.push({i,x});
-    //     }else{
-    //         int x;
-    //         cin>>x;
-    //         help=queue<pair<int,int>>();
-    //         help.push({-1,x});
-    //     }
-    // }
-    // int a=help.front().first;
-    // if(a==-1){
-    //     int b=help.front().second;
-    //     for(int i=0;i<n;i++){
-    //         arr[i]=b;
-    //         help.pop();
-    //     }
-    // }
-    // while(help.empty()){
-    //     int a=help.front().first;
-    //     int b=help.front().second;
-    //     arr[a]=b;
-    //     help.pop();
-    // }
-    // for(auto it:arr){
-    //     cout<<it<<" ";
-    // }
-    // cout<<endl;
     int prev=-1;
+    int temp=0;
+    int temp1=0;
     while(q--){
+        temp1++;
         int a;
         cin>>a;
         if(a==1){
             int i,x;
             cin>>i>>x;
-            if(prev==-1){
-                sum=sum-arr[i-1]+x;
-                arr[i-1]=x;
+            int val;
+            if(help[i-1]>temp||prev==-1){
+                val=arr[i-1];
+            } else {
+                val=prev;
             }
-            else{
-                sum=sum-prev+x;
-                
-            }
+            sum=sum-val+x;
+            arr[i-1]=x;
+            help[i-1]=temp1;
             cout<<sum<<endl;
         }else{
             int x;
             cin>>x;
             sum=n*x;
             prev=x;
+            temp=temp1;
             cout<<sum<<endl;
         }
     }
