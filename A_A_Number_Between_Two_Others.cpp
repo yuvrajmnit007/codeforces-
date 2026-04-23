@@ -10,6 +10,7 @@ signed main() {
         int x,y;
         cin>>x>>y;
         int p=y/x;
+        
         if(p<=2){
             cout<<"NO"<<endl;
         }else{
