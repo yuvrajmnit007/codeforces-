@@ -9,7 +9,13 @@ signed main() {
     while (t--) {
         int n,k;
         cin>>n>>k;
-        
+        k=k-1;
+        if(n%2==0){
+            cout<<(k%n)+1<<endl;
+        }else{
+            int temp=n/2;
+            cout<<(k+k/temp)%n+1<<endl;
+        }
     }
     return 0;
 }
