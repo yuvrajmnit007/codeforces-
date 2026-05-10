@@ -9,19 +9,23 @@ signed main() {
     while (t--) {
         int n;
         cin>>n;
-        vector<int>arr(n),even,odd;
+        vector<int>arr(n);
         for(int i=0;i<n;i++){
             cin>>arr[i];
-            if(arr[i]%2){
-                odd.push_back(arr[i]);
+        }
+        int alice=0,bob=0;
+        sort(arr.rbegin(),arr.rend());
+        for(int i=0;i<n;i++){
+            if(i%2==0){
+                if(arr[i]%2==0){
+                    alice+=arr[i];
+                }
             }else{
-                even.push_back(arr[i]);
+                if(arr[i]%2){
+                    bob+=arr[i];
+                }
             }
         }
-        sort(odd.rbegin(),odd.rend());
-        sort(even.rbegin(),even.rend());
-        int alice=0,bob=0;
-        
         if(alice==bob){
             cout<<"Tie"<<endl;
         }else if(alice>bob){
