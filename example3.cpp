@@ -16,7 +16,7 @@ class cplx{
         return result;
     }
     void display(){
-        if(img>=0){
+        if(img>=0){ 
             cout<<real<<"+"<<img<<"i"<<endl;
         }else{
             cout<<real<<img<<"i"<<endl;
