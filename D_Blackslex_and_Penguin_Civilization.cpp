@@ -9,16 +9,26 @@ signed main() {
     while (t--) {
         int n;
         cin>>n;
-        int k=n+1;
         map<int,int>mp;
-        while(k--){
-            mp[pow(2,k)-1]++;
-            cout<<pow(2,k)-1<<" ";
-        }
-        for(int i=0;i<pow(2,n);i++){
-            if(mp.count(i)==0){
-                cout<<i<<" ";
+        int val=(1LL<<n)-1;
+        cout<<val<<" ";
+        mp[val]++;
+        for(int i=n-1;i>=0;i--){
+            val-=(1LL<<i);
+            cout<<val<<" ";
+            mp[val]++;
+            for(int j=1;j<pow(2,n);j++){
+                if(j%2==0)continue;
+                if((j&val)==val){
+                    if(mp.count(j)!=0)continue;
+                    mp[j]++;
+                    cout<<j<<" ";
+                }
             }
+        }
+        for(int j=1;j<pow(2,n);j++){
+            if(j%2)continue;
+            cout<<j<<" ";
         }
         cout<<endl;
     }
