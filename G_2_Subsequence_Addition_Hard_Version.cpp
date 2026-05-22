@@ -13,20 +13,21 @@ signed main() {
         for(int i=0;i<n;i++){
             cin>>arr[i];
         }
-        if(arr[n-2]>arr[n-1]){
-            cout<<-1<<endl;
-        }else if(arr[n-1]>=0){
-            cout<<n-2<<endl;
-            for(int i=1;i<n-1;i++){
-                cout<<i<<" "<<n-1<<" "<<n<<endl;
-            }
-        }else{
-            if(is_sorted(arr.begin(),arr.end())){
-                cout<<0<<endl;
+        bool flag=1;
+        sort(arr.begin(),arr.end());
+        int sum=1;
+        for(int i=0;i<n;i++){
+            if(arr[i]>sum){
+                cout<<"NO"<<endl;
+                flag=0;
+                break;
             }else{
-                cout<<-1<<endl;
+                if(i!=0){
+                    sum+=arr[i];
+                }
             }
         }
+        if(flag)cout<<"YES"<<endl;
     }
     return 0;
 }
