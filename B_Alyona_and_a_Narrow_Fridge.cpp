@@ -12,7 +12,21 @@ signed main() {
         for(int i=0;i<n;i++){
             cin>>arr[i];
         }
-        
+        vector<int>vec;
+        int ans=0;
+        for(int i=0;i<n;i++){
+            vec.push_back(arr[i]);
+            sort(vec.rbegin(),vec.rend());
+            int sum=0;
+            for(int j=0;j<vec.size();j+=2){
+                sum+=vec[j];
+            }
+            int p=vec.size();
+            if(sum<=k){
+                ans=max(ans,p);
+            }
+        }
+        cout<<ans<<endl;
     }
     return 0;
 }
