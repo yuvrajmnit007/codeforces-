@@ -68,8 +68,7 @@ int query(int start, int end, int idx, int l, int r) {
     if (start > r || end < l) return 0;
     if (start <= l && r <= end) return segtree[idx];
     int mid = (l + r) / 2;
-    return (query(start, end, 2*idx+1, l, mid) +
-            query(start, end, 2*idx+2, mid+1, r)) % MOD;
+    return (query(start, end, 2*idx+1, l, mid)+query(start, end, 2*idx+2, mid+1, r)) % MOD;
 }
 signed main() {
     ios::sync_with_stdio(false);
@@ -90,7 +89,7 @@ signed main() {
         int p, l, r;
         cin >> p >> l >> r;
         if (p == 1) update(l, r, 0, 1, n);
-        else cout << query(l, r, 0, 1, n) << "\n";
+        else cout << query(l, r, 0, 1, n) <<endl;
     }
     return 0;
 }
