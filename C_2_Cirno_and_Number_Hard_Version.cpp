@@ -26,7 +26,7 @@ signed main() {
             ans=min(ans,abs(a-b1));
         }
         b2=arr[0];
-        if(b2==0)b2=arr[n-1];
+        if(b2==0)b2=arr[1];
         for(int i=0;i<sz;i++){
             b2*=10;
             b2+=arr[0];
@@ -44,19 +44,23 @@ signed main() {
                         tryy*=10;
                         tryy+=arr[0];
                     }
-                    ans=min(ans,abs(a-tryy));
+                    ans=min(ans,abs(a-tryy)*1LL);
                 }else if(x<dig){
                     int tryy=curr*10+x;
                     for(int j=i+1;j<sz;j++){
                         tryy*=10;
-                        tryy+= arr[1];
+                        tryy+=arr[n-1];
                     }
-                    ans=min(ans,abs(a-tryy));
+                    ans=min(ans,abs(a-tryy)*1LL);
                 }
             }
-            if(dig!=arr[0]&&dig!=arr[1]) {
+            bool bb=0;
+            for(auto x:arr){
+                if(x==dig)bb=1;
+            }
+            if(!bb){
                 b=0;
-                break;
+                break;  
             }
             curr=curr*10+ dig;
         }
